@@ -11,7 +11,7 @@ jobs:
   use-build:
     # adapt to point to the current repo
     # https://docs.github.com/en/actions/learn-github-actions/reusing-workflows#calling-a-reusable-workflow
-		# change this to the current repo
+    # change this to the current repo
     uses: joel07p/autoDeployTest/.github/workflows/build.yml@main
     # that's all - jobs that call a reusable workflow can do nothing else
 
