@@ -21,7 +21,7 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout
         # 2.4.0 was the latest at the time of writing
-        uses: actions/checkout@2.4.0
+        uses: actions/checkout@v2.4.0
     
       # a standard step for GitHub actions on Node
       # https://github.com/actions/setup-node
