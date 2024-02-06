@@ -34,6 +34,7 @@ jobs:
           node-version: 18
           # cache installed dependencies for best performance. yarn and pnpm are also supported  
           cache: npm
+          cache-dependency-path: backend/package-lock.json
 
       - name: Install dependencies
         # For Node 16: https://docs.npmjs.com/cli/v8/commands/npm-ci
