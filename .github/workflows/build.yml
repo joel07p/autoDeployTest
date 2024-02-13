@@ -39,10 +39,12 @@ jobs:
       - name: Install dependencies
         # For Node 16: https://docs.npmjs.com/cli/v8/commands/npm-ci
         # for other Node versions, look up the npm version at https://nodejs.org/en/download/releases/
+        working-directory: backend
         run: npm i
         
       # lint steps, test steps, etc go here. adapt to your needs
       - name: Build
+        working-directory: backend
         run: npm run build
 
       # upload the artifact for use in either CD
