@@ -1,3 +1,3 @@
 # autoDeployTest
-# hallo
-# 123456789
+This is a TEST repository!
+Do not clone it
