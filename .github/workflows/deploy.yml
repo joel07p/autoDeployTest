@@ -39,7 +39,11 @@ jobs:
       - name: Display files
         run: cat backend/dist/app.service.js
 
-      # deploy! adapt to your needs.
+  upload-to-server:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+    # deploy! adapt to your needs.
       - name: Upload via RSYNC
         # https://github.com/marketplace/actions/ftp-action
         # 'with' config is specific to the 'sebastianpopp/ftp-action' action
