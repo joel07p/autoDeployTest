@@ -91,5 +91,6 @@ jobs:
             pm2 kill
             pm2 start --name backend/nest dist/main.js
             cd ${{ secrets.FRONTEND_DIR }}
-            npm run preview
+            pm2 start --name frontend/react npm -- run preview
+            
             
