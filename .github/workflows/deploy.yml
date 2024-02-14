@@ -45,7 +45,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: backend/dist/
-          remote_path: ${{ secrets.DIRECTORY }}/dist
+          remote_path: ${{ secrets.BACKEND_DIR }}/dist
           remote_host: ${{ secrets.SSH_HOST }}
           remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USERNAME }}
