@@ -36,28 +36,50 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
 
-      - name: Install dependencies
+      - name: Install dependencies for backend
         # For Node 16: https://docs.npmjs.com/cli/v8/commands/npm-ci
         # for other Node versions, look up the npm version at https://nodejs.org/en/download/releases/
         working-directory: backend
         run: npm i
         
+      - name: Install dependencies for frontend
+        working-directory: frontend
+        run: npm i
+        
       # lint steps, test steps, etc go here. adapt to your needs
-      - name: Build
+      - name: Build backend
         working-directory: backend
+        run: npm run build
+        
+      - name: Build frontend
+        working-directory: frontend
         run: npm run build
 
       # upload the artifact for use in either CD
       # here, the 'dist' directory is compressed and uploaded to GitHub asset storage as 'build-artifact'
-      - name: Upload artifact
+      - name: Upload backend artifact
         # https://github.com/actions/upload-artifact
         uses: actions/upload-artifact@v4.3.1
         with:
           # the name to save the compressed asset as
-          name: build-artifact
+          name: build-artifact-backend
           # the directory or file to upload. adapt to your needs
           path: backend/dist
           # the artifact is only needed for the duration of the build-deploy workflow
           # adapt to your needs
           # https://github.com/actions/upload-artifact#retention-period
           retention-days: 1
+          
+      - name: Upload frontend artifact
+        # https://github.com/actions/upload-artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          # the name to save the compressed asset as
+          name: build-artifact-frontend
+          # the directory or file to upload. adapt to your needs
+          path: frontend/dist
+          # the artifact is only needed for the duration of the build-deploy workflow
+          # adapt to your needs
+          # https://github.com/actions/upload-artifact#retention-period
+          retention-days: 1
+        
