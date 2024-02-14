@@ -33,7 +33,7 @@ jobs:
           name: build-artifact
           # where to save the artifact
           # using the same path as in the build workflow "restores" the state from the end of the build workflow
-          path: backend/dist
+          path: dist
 
       # deploy! adapt to your needs.
       - name: Upload via RSYNC
@@ -44,7 +44,7 @@ jobs:
         uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -avzr --delete
-          path: backend/dist/
+          path: dist
           remote_path: ${{ secrets.BACKEND_DIR }}/dist
           remote_host: ${{ secrets.SSH_HOST }}
           remote_port: ${{ secrets.SSH_PORT }}
