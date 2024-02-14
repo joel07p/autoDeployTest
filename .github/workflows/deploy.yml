@@ -62,5 +62,6 @@ jobs:
             service nginx stop
             cd ${{ secrets.BACKEND_DIR }}
             pm2 kill
+            npm run build
             pm2 start --name backend/nest dist/main.js
             
