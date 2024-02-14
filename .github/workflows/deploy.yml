@@ -38,18 +38,13 @@ jobs:
         run: ls -R backend/dist
       - name: Display files
         run: cat backend/dist/app.service.js
-
-  upload-to-server:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Display files
-        run: cat dist/app.service.js
+        
     # deploy! adapt to your needs.
       - name: Upload via RSYNC
         # https://github.com/marketplace/actions/ftp-action
         # 'with' config is specific to the 'sebastianpopp/ftp-action' action
         uses: actions/checkout@v4.1.1
+      - run: cat backend/dist/app.service.js
       - name: rsync deployments
         uses: burnett01/rsync-deployments@6.0.0
         with:
@@ -60,6 +55,7 @@ jobs:
           remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
           
       - uses: appleboy/ssh-action@master
         name: connect to server and restart webservices | pm2 | nginx
