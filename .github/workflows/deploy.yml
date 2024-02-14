@@ -13,7 +13,7 @@ jobs:
     # https://docs.github.com/en/actions/learn-github-actions/reusing-workflows#calling-a-reusable-workflow
     # change this to the current repo
     uses: joel07p/autoDeployTest/.github/workflows/build.yml@master
-    # that's all - jobs that call a reusable workflow can do nothing else
+    # that's all - jobs that call a reusable workflow can do nothing else 1
 
   deploy:
     # only run the 'deploy' job if the 'use-build' job passes
